@@ -185,3 +185,82 @@ module.exports.deletePet = function(req, res){
             }
           );
       } 
+
+module.exports.formUpdateDescription = function(req, res){
+        var requestOps, path;
+        path = "/api/favoritepets/" + req.params.favoritepetid;
+        requestOps = {
+          url: apiOps.server + path,
+          method: "GET",
+          json: {}
+        };
+        request(requestOps, 
+          function(err, response, body){
+            var desclist = "";
+            var l = body.descs.length;
+            var i;
+            if (l > 0){
+              for (i = 0; i < l-1; i++){
+                desclist += body.descs[i].desc + ', '
+              }
+              desclist += body.descs[l-1].desc;
+            }
+            res.render('updatedescription', {
+              title: 'Update  Description',
+              error: req.query.err,
+              favorpet: body,
+              pet:{
+                name: body.name,
+                descs: desclist
+              }
+            });
+          });
+      };
+
+module.exports.updateDescription = function(req, res){
+        var requestOps, path, petid, postdata;
+        petid = req.params.favoritepetid;
+        path = "/api/favoritepets/" + req.params.favoritepetid + "/description";
+        var desclist = req.body.formdesc.split(",");
+        var descdict = [];
+        if(desclist[0]!== "") {
+          var l = desclist.length;
+          var i;
+          for (i = 0; i < l; i++){
+            descdict.push({
+              "desc": desclist[i]
+            });
+          }
+        }
+        postdata = {
+          descs: descdict
+        };
+        requestOps = {
+          url : apiOps.server + path,
+          method: "PUT",
+          json : postdata
+        };
+        if (!postdata.descs) {
+          res.redirect('/updatedescription/'+petid);
+        }
+        else {
+          request( requestOps, function(err, response, body) {
+            if (response.statusCode === 200) {
+              res.redirect('/pet/'+petid);
+            } else if (response.statusCode === 400 && body.formdescs && body.formdescs === "ValidationError" ) {
+              res.redirect('/updatedescription/' + petid);
+            } else {
+              res.status(response.statusCode);
+              res.render('error', {
+                message: "field is empty",
+                petid: petid,
+                error: {
+                  status: response.statusCode,
+                  stack: 'go back to pet'
+                }
+              });
+            }
+          }
+         );
+        } //else 
+      }

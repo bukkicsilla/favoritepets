@@ -67,3 +67,37 @@ module.exports.deletePet = function(req, res){
           res.json({"message":"no id"});
         } 
       } 
+
+module.exports.updateDescription = function(req, res){
+        if(!req.params.favoritepetid){
+          res.status(404);
+          res.json({"message": "id not found, it is required"});    
+          return;
+        }
+        Pet.findById(req.params.favoritepetid)
+        .select('-name')
+        .exec(
+          function(err, pet){
+            if(!pet){
+              res.status(404);
+              res.json({"message":"pet is not found"});
+              return;
+            } else if (err) {
+              res.status(400);
+              res.json(err);
+              return;
+            }
+            pet.descs = [];
+            pet.descs = pet.descs.concat(req.body.descs);
+            pet.save(function(err,  pet){
+              if (err){
+                res.status(404);
+                res.json(err);
+              } else {
+                res.status(200);
+                res.json(pet);
+              }   
+            });
+          });
+      }
+      
