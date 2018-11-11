@@ -6,10 +6,13 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    
     <ul>
-           <li>Donut</li>
-           <li>Moomoo</li>
-        </ul>
+      <% pets.forEach(function(pet){ %>
+      <li> <a href="/pet"><%= pet.name %></a></li>
+      <% }); %>
+    </ul>
+     
        
   </body>
 </html>

@@ -8,4 +8,5 @@ var petController = require('../controllers/pet');
 });*/
 
 router.get('/pets', petController.getPets);
+router.get('/pet', petController.getPet);
 module.exports = router;
