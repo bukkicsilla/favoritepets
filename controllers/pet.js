@@ -15,7 +15,7 @@ module.exports.getPet = function(req, res){
     pet:                   
             { 
               name: 'Donut',
-              desc: [
+              descs: [
                 'Tabby cat', '2 years old', 
                 'Hunting'
                 ]
