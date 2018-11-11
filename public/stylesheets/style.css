@@ -12,4 +12,13 @@ li, p {
  #color {
     color: blueviolet;
  }
-             
+.change{
+      font-size: 150%;
+      color: white;
+      background: red;
+      padding:5px;
+      border-radius: 48%;
+    }
+a {
+    text-decoration: none;
+}               

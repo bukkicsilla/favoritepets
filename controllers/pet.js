@@ -99,3 +99,58 @@ module.exports.getPet = function(req,res){
           }//else
         });//function
     }
+
+module.exports.formCreatePet = function(req, res){
+      res.render('createpet', {
+        title: 'Create a Pet',
+        error: req.query.err
+      });
+    }
+
+module.exports.createPet = function(req, res){
+      var requestOps, path, postdata;
+      path = '/api/favoritepets';
+      var desclist = req.body.formdesc.split(",");
+      var descdict = [];
+      if (desclist[0] !== ""){
+        var l = desclist.length;
+        var i;
+        for (i = 0; i <l; i++){
+          descdict.push({ "desc": desclist[i] });
+        }
+      }
+      postdata = {
+        name: req.body.formname,    
+        descs: descdict
+      };
+      
+      requestOps = {
+        url : apiOps.server + path,
+        method : "POST",
+        json : postdata
+      };
+      if (!postdata.name) {
+        res.redirect('/createpet/');
+      } else {
+        request(
+          requestOps, function(err, response, body) {
+            if (response.statusCode === 201) {
+              res.redirect('/pets');
+            } else if (response.statusCode === 400 && body.name && body.name === "ValidationError" ) {
+              res.redirect('/createpet/');
+            } else {
+              res.status(response.statusCode);
+              res.render('error', {
+                message: "The name must be unique!",
+                error: {
+                  status: response.statusCode,
+                  stack: 'go back to the form'
+                }
+              });
+            }
+          }
+        );
+      }     
+   }
+
+      

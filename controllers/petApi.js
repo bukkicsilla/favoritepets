@@ -32,3 +32,18 @@ module.exports.getPet = function(req, res){
          res.json("no id in request");
     }
 }
+
+module.exports.createPet = function(req, res){
+      Pet.create({
+        name: req.body.name,
+        descs: req.body.descs
+      }, function(err, pet){
+        if(err){
+          res.status(400);
+          res.json(err);
+        } else {
+          res.status(201);
+          res.json(pet);
+        }
+      });
+    }
