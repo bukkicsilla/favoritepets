@@ -1,3 +1,5 @@
+
+//https://searchcode.com/codesearch/view/6134527/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;   
 
@@ -21,4 +23,4 @@ var Pet = new Schema({
     descs: [Desc]
 });
 
-mongoose.model('favoritepet', Pet);
+mongoose.model('Favoritepet', Pet);

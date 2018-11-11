@@ -9,14 +9,14 @@
           <p><%= pet.name %> </p>
           <p> Description:</p>
           
-    <ul>
-     <% for(var i=0; i<pet.descs.length; i++) {%>
-       <li>
-         <span id="color"><%= pet.descs[i] %></span>
-       </li>
-     <% } %>
+    
+   <ul>  
+      <% pet.descs.forEach(function(desc){ %>
+        <li>
+          <span id="color"><%= desc.desc %></span>
+        </li>
+      <% }); %>
     </ul>
-   
         </body>
       </html>
      

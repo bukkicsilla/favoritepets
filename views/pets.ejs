@@ -7,12 +7,12 @@
   <body>
     <h1><%= title %></h1>
     
-    <ul>
-      <% pets.forEach(function(pet){ %>
-      <li> <a href="/pet"><%= pet.name %></a></li>
-      <% }); %>
+    
+     <ul>
+    <% pets.forEach(function(pet){ %>
+    <li> <a href='/pet/<%= pet._id %>'><%= pet.name %></a></li>
+    <% }); %>
     </ul>
-     
        
   </body>
 </html>

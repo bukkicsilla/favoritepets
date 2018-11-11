@@ -8,5 +8,6 @@ var petController = require('../controllers/pet');
 });*/
 
 router.get('/pets', petController.getPets);
-router.get('/pet', petController.getPet);
+//router.get('/pet', petController.getPet);
+router.get('/pet/:favoritepetid', petController.getPet);
 module.exports = router;
