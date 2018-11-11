@@ -47,3 +47,23 @@ module.exports.createPet = function(req, res){
         }
       });
     }
+
+module.exports.deletePet = function(req, res){
+        var partid = req.params.favoritepetid;
+        if (partid){
+          Pet.findByIdAndRemove(partid)
+            .exec(
+              function(err, pet){
+                if(err){
+                  res.status(404);
+                  res.json(err);
+                  return;
+                }
+                res.status(204);
+                res.json(null);
+            });
+        } else {
+          res.status(404);
+          res.json({"message":"no id"});
+        } 
+      } 

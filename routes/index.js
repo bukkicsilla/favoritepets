@@ -12,4 +12,6 @@ router.get('/pets', petController.getPets);
 router.get('/pet/:favoritepetid', petController.getPet);
 router.get('/createpet', petController.formCreatePet);
 router.post('/createpet', petController.createPet);
+router.get('/deletepet/:favoritepetid', petController.deletePet);
+
 module.exports = router;

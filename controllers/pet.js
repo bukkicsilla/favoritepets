@@ -154,3 +154,34 @@ module.exports.createPet = function(req, res){
    }
 
       
+module.exports.deletePet = function(req, res){
+        var requestOps, path;
+        path = "/api/favoritepets/" + req.params.favoritepetid;
+          requestOps = {
+            url: apiOps.server + path,
+            method: "DELETE",
+            json: {}
+          };
+          request(requestOps, 
+            function(err, response, body){
+              if (response.statusCode === 204){
+                 res.redirect('/pets');
+              } else  {
+                 if (response.statusCode === 404){
+                   title = "404, page not found";
+                 } else {
+                   title = response.statusCode + ", sorry";
+                 }
+                res.status(response.statusCode);
+                res.render('error', {
+                  title: title,
+                  message: "Try with different id, page not found",
+                  error: {
+                    status: response.statusCode,
+                    stack: 'go back to pet list'
+                  }
+                });    
+              }//else
+            }
+          );
+      } 
