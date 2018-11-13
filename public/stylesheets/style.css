@@ -16,7 +16,7 @@ ul{
     margin:20px;
 }
 #favorpets{
-    color: red;
+    color: forestgreen;
 }
  #color {
     color: blueviolet;
@@ -24,14 +24,14 @@ ul{
 .change{
       font-size: 150%;
       color: white;
-      background: red;
+      background: forestgreen;
       padding:12px;
       border-radius: 38%;
      //border: black solid 2px;
     }
 a {
     text-decoration: none;
-    color: cornflowerblue;
+    color: blueviolet;
 }    
 p#newpet{
     //border: black solid 2px;
@@ -61,7 +61,9 @@ h3 {
 }
 .container {
   padding: 20px;
-  background-color: #efefef;
+  padding-bottom: 40px;
+  //background-color: #efefef;
+    background-color: azure;
   width: 543px;
   border-radius: 6px;
 }
