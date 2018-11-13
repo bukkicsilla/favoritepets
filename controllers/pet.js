@@ -40,7 +40,8 @@ var apiOps = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-    apiOps.server = "https://gentle-forest-13499.herokuapp.com";
+    //apiOps.server = "https://gentle-forest-13499.herokuapp.com";
+    apiOps.server = "https://favoritepets.herokuapp.com/";
 }
 
 module.exports.getPets = function(req, res){
