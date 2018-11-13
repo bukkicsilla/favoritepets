@@ -5,8 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    
+      <h1 id="favorpets"><%= title %></h1>
     
      <ul>
     <% pets.forEach(function(pet){ %>
@@ -14,6 +13,6 @@
     <% }); %>
     </ul>
        
-      <a class="change" href='/createpet'> New Pet </a>
+      <p id="newpet"><a class="change" href='/createpet'> New  </a></p>
   </body>
 </html>

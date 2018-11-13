@@ -6,18 +6,27 @@
           <link rel='stylesheet' href='/stylesheets/style.css' />
         </head>
         <body>
-          <h1> Replace Description for <%= pet.name %></h1> 
+          <h1> Update Details for <%= pet.name %></h1> 
           <form class="form-horizontal" action="" method="post" role="form">
-            <p> Please separate words with commas.  </p>
+              
+            <p> Please separate words in features with commas.  </p>
+            <tr>
             <table>
             <tr>
-            <td>Description:</td>
+                <td>Age </td>
+                <td>
+                <input type="test" name="formage" value="">
+                </td>
+            </tr>
+            <tr>
+            <td>Features   </td>
             <td>
             <input type="text" name="formdesc" value="<%= pet.descs %>">
             </td>
             </tr>
+                
             <tr>
-            <td colspan="2"><input type="submit" value="Save" ></td>
+                <td colspan="2"><button type="submit" >Update </button></td>
             </tr>
             </table>
           </form>

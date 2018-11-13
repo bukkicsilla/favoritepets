@@ -6,8 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+h1{
+    color: blueviolet;
+}
 li, p {
   font-size: 24px;
+}
+ul{
+    margin:20px;
+}
+#favorpets{
+    color: red;
 }
  #color {
     color: blueviolet;
@@ -16,12 +25,22 @@ li, p {
       font-size: 150%;
       color: white;
       background: red;
-      padding:5px;
-      border-radius: 48%;
+      padding:12px;
+      border-radius: 38%;
+     //border: black solid 2px;
     }
 a {
     text-decoration: none;
+    color: cornflowerblue;
 }    
+p#newpet{
+    //border: black solid 2px;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+a#petlist {
+    color: white;
+}
 
 .changepet{
     font-size: 140%;
@@ -31,3 +50,49 @@ a {
     margin: 10px;
     border-radius: 50%;
 }
+
+h3 {
+    text-decoration: none;
+  padding: 10px 20px;
+  background-color: #00AE4D;
+  width: 160px;
+  border-radius: 6px;
+  color: #FFFFFF;
+}
+.container {
+  padding: 20px;
+  background-color: #efefef;
+  width: 543px;
+  border-radius: 6px;
+}
+#details{
+    padding-left: 50px;
+    color: blueviolet;
+}
+
+table {
+  width: 360px;
+}
+
+.container table tr td {
+  padding: 5px;
+}
+
+table tr td input  {
+  border: solid 1px #dddddd;
+  padding: 5px 10px;
+  border-radius: 6px;
+  width: 100%;
+  color: #777777;
+}
+
+table tr td button {
+  border: solid 1px #AABF5C;
+  background-color: forestgreen;
+  border-radius: 10px;
+  color: white;
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 140%;
+}
+

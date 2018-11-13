@@ -8,18 +8,23 @@
       <body>
         <h1> Create a Pet </h1>
         <form class="form-horizontal" action="" method="post" role="form">
-          <p> Name is requiered. Separate descriptions with commas.</p>
+          <p> Name is requiered. Separate words in features with commas.</p>
           <table>
             <tr>
               <td>Name</td>
               <td><input type="text" name="formname"></td>
             </tr>
+              <tr>
+              <td>Age</td>
+              <td><input type="text" name="formage"></td>
+            </tr>
             <tr>
-              <td>Descriptions</td>
+              <td>Features</td>
               <td><input type="text" name="formdesc"></td>
             </tr>      
             <tr>
-              <td colspan="2"><input type="submit" value="Save"></td>
+                <!--<td colspan="2"><button type="submit" value="Save"></button></td>-->
+                <td colspan="2"><button type="submit">Save</button></td>
             </tr>
           </table>
         </form>

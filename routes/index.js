@@ -3,12 +3,11 @@ var router = express.Router();
 var petController = require('../controllers/pet');
 
 /* GET home page. */
-/*router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Do you have favorite pets?' });
-});*/
+});
 
 router.get('/pets', petController.getPets);
-//router.get('/pet', petController.getPet);
 router.get('/pet/:favoritepetid', petController.getPet);
 router.get('/createpet', petController.formCreatePet);
 router.post('/createpet', petController.createPet);

@@ -5,22 +5,28 @@
           <link rel='stylesheet' href='/stylesheets/style.css' />
         </head>
         <body>
+            <div class="container">
+            <h3><a href="/pets" id="petlist">Favorite Pet List</a></h3>
           <h1><%= title %></h1>
-          <p><%= pet.name %> </p>
-          <p> Description:</p>
+            <div id="details">
+          <p> Name:   <%= pet.name %> </p>
+          <p> Age: </p>
+          <p> Features:</p>
           
     
    <ul>  
       <% pet.descs.forEach(function(desc){ %>
         <li>
-          <span id="color"><%= desc.desc %></span>
+          <span><%= desc.desc %></span>
         </li>
       <% }); %>
     </ul>
-            
+        </div> 
     <br><br>
-    <a href='/updatedescription/<%= favorpet._id %>' class="changepet"> Update Description </a>
-    <a href='/deletepet/<%= favorpet._id %>' class="changepet"> Delete this pet. </a>
+    <a href='/updatedescription/<%= favorpet._id %>' class="changepet"> Update </a>
+    <a href='/deletepet/<%= favorpet._id %>' class="changepet"> Delete </a>
+                
+            </div>        
         </body>
       </html>
      
