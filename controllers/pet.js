@@ -73,7 +73,7 @@ module.exports.getPets = function(req, res){
     }
 
 module.exports.getPet = function(req,res){
-    console.log("len ", window.history.length);
+    //console.log("len ", window.history.length);
       var requestOps, path;
       path = "/api/favoritepets/" + req.params.favoritepetid;
     
@@ -90,6 +90,7 @@ module.exports.getPet = function(req,res){
               favorpet: body,
               pet: {
                 name: body.name,
+                age: body.age,
                 descs: body.descs
               }
                 });
@@ -133,7 +134,8 @@ module.exports.createPet = function(req, res){
         }
       }
       postdata = {
-        name: req.body.formname,    
+        name: req.body.formname, 
+        age: req.body.formage,
         descs: descdict
       };
       
@@ -200,7 +202,7 @@ module.exports.deletePet = function(req, res){
           );
       } 
 
-module.exports.formUpdateDescription = function(req, res){
+module.exports.formUpdatePet = function(req, res){
         var requestOps, path;
         path = "/api/favoritepets/" + req.params.favoritepetid;
         requestOps = {
@@ -220,19 +222,20 @@ module.exports.formUpdateDescription = function(req, res){
               desclist += body.descs[l-1].desc;
             }
             //res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');//
-            res.render('updatedescription', {
-              title: 'Update  Description',
+            res.render('updatepet', {
+              title: 'Update  Pet',
               error: req.query.err,
               favorpet: body,
               pet:{
                 name: body.name,
+                age: body.age,
                 descs: desclist
               }
             });
           });
       };
 
-module.exports.updateDescription = function(req, res){
+module.exports.updatePet = function(req, res){
         var requestOps, path, petid, postdata;
         petid = req.params.favoritepetid;
         path = "/api/favoritepets/" + req.params.favoritepetid + "/description";
@@ -248,6 +251,7 @@ module.exports.updateDescription = function(req, res){
           }
         }
         postdata = {
+          age: req.body.formage,
           descs: descdict
         };
         requestOps = {
@@ -256,7 +260,7 @@ module.exports.updateDescription = function(req, res){
           json : postdata
         };
         if (!postdata.descs) {
-          res.redirect('/updatedescription/'+petid);
+          res.redirect('/updatedepet/'+petid);
         }
         else {
           request( requestOps, function(err, response, body) {
@@ -266,7 +270,7 @@ module.exports.updateDescription = function(req, res){
                 //res.redirect('back');
                 //res.redirect('/pets');
             } else if (response.statusCode === 400 && body.formdescs && body.formdescs === "ValidationError" ) {
-              res.redirect('/updatedescription/' + petid);
+              res.redirect('/updatepet/' + petid);
             } else {
               res.status(response.statusCode);
               res.render('error', {

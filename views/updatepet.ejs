@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+      <html>
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title><%= title %></title>
+          <link rel='stylesheet' href='/stylesheets/style.css' />
+        </head>
+        <body>
+            <div class="container">
+          <h1> Update Details for <%= pet.name %></h1> 
+          <form class="form-horizontal" action="" method="post" role="form">
+              
+            <p> Please separate words in features with commas.  </p>
+            <tr>
+            <table>
+            <tr>
+                <td>Age </td>
+                <td>
+                <input type="test" name="formage" value="<%= pet.age %>">
+                </td>
+            </tr>
+            <tr>
+            <td>Features   </td>
+            <td>
+            <input type="text" name="formdesc" value="<%= pet.descs %>">
+            </td>
+            </tr>
+                
+            <tr>
+                <td colspan="2"><button type="submit" >Update </button></td>
+            </tr>
+            </table>
+          </form>
+            </div>
+        </body>
+      </html>
+ 

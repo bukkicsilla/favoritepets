@@ -36,6 +36,7 @@ module.exports.getPet = function(req, res){
 module.exports.createPet = function(req, res){
       Pet.create({
         name: req.body.name,
+        age: req.body.age,
         descs: req.body.descs
       }, function(err, pet){
         if(err){
@@ -68,7 +69,7 @@ module.exports.deletePet = function(req, res){
         } 
       } 
 
-module.exports.updateDescription = function(req, res){
+module.exports.updatePet = function(req, res){
         if(!req.params.favoritepetid){
           res.status(404);
           res.json({"message": "id not found, it is required"});    
@@ -87,6 +88,7 @@ module.exports.updateDescription = function(req, res){
               res.json(err);
               return;
             }
+            pet.age = req.body.age;
             pet.descs = [];
             pet.descs = pet.descs.concat(req.body.descs);
             pet.save(function(err,  pet){
