@@ -38,7 +38,7 @@ p#newpet{
     padding-left: 40px;
     padding-top: 20px;
 }
-a#petlist {
+a.linkwhite {
     color: white;
 }
 
@@ -98,3 +98,8 @@ table tr td button {
   font-size: 140%;
 }
 
+#foot{
+    text-align: center;
+    text-color: red;
+    font-size: 24px;
+}

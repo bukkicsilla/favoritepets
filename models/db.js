@@ -29,6 +29,7 @@ process.once('SIGUSR2', function() {
         process.kill(process.pid, 'SIGUSR2');
     });
 });
+
 // For app termination
 process.on('SIGINT', function() {
     gracefulShutdown('app termination', function() {
