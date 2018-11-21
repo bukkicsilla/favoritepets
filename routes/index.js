@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport');  
 var router = express.Router();
 var petController = require('../controllers/pet');
+var resetController = require('../controllers/reset');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,6 +16,19 @@ router.post('/createpet', petController.createPet);
 router.get('/deletepet/:favoritepetid', petController.deletePet);
 router.get('/updatedescription/:favoritepetid', petController.formUpdatePet);
 router.post('/updatedescription/:favoritepetid', petController.updatePet);
+
+
+router.get('/forgot', function(req, res) {
+  res.render('forgot', {
+    user: req.user,
+    message: req.flash('resetPassword')
+  });
+});
+
+router.post('/forgot', resetController.forgotPassword);
+
+router.get('/reset/:token', resetController.useToken);
+router.post('/reset/:token', resetController.resetPassword);//??????
 
 router.get('/login', function(req, res, next) {  
   res.render('login', { title: 'Login', message: req.flash('loginMessage') });

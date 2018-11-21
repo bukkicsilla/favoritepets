@@ -11,10 +11,12 @@ var index = require('./routes/index');
 var indexApi = require('./routes/indexApi');
 var users = require('./routes/users');
 
+var nodemailer = require('nodemailer');
 var passport = require('passport');  
 var LocalStrategy = require('passport-local').Strategy;  
 //var mongoose = require('mongoose');  
-var flash = require('connect-flash');  
+var flash = require('connect-flash'); 
+var exflash = require('express-flash');
 var session = require('express-session');
 
 var app = express();
@@ -37,6 +39,7 @@ app.use(session({ secret: 'petsecret',
 app.use(passport.initialize());  
 app.use(passport.session());  
 app.use(flash());
+app.use(exflash());
 require('./controllers/passport')(passport); 
 
 app.use('/', index);
