@@ -7,7 +7,15 @@
         <body>
             <div class="container">
             <h3><a href="/pets" class="linkwhite">Favorite Pet List</a></h3>
-          <h1><%= title %></h1>
+          <!--<h1><%= title %></h1>-->
+                
+                <div>
+          <% if (user.local.email != null) { %>
+            <!--<img src="https://avatars.io/gravatar/<%= user.local.email %>" class="img-circle"><br>-->
+            <strong>Logged in by</strong> : <%= user.local.email %><br>
+          <% } %>
+           <br>
+        </div>
             <div id="details">
           <p> Name:   <%= pet.name %> </p>
           <p> Age: <%= pet.age %></p>
@@ -23,9 +31,18 @@
     </ul>
         </div> 
     <br><br>
+        
+                
+    <%if (user.local.email === pet.petemail) { %>
     <a href='/updatedescription/<%= favorpet._id %>' class="changepet"> Update </a>
     <a href='/deletepet/<%= favorpet._id %>' class="changepet"> Delete </a>
+    <% } %>
                 
+                <div>
+            <%if (user.local.email !== pet.petemail) { %>
+          <p>Created by <%= pet.petemail %></p> 
+                    <% } %>
+      </div>
             </div>        
         </body>
       </html>

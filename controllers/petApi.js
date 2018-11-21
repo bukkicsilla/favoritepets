@@ -37,7 +37,8 @@ module.exports.createPet = function(req, res){
       Pet.create({
         name: req.body.name,
         age: req.body.age,
-        descs: req.body.descs
+        descs: req.body.descs,
+        petemail: req.body.petemail
       }, function(err, pet){
         if(err){
           res.status(400);

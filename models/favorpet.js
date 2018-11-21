@@ -21,6 +21,7 @@ var Desc = new Schema({
 var Pet = new Schema({
     name: { type: String, unique: true, required: true},
     age: {type: String},
+    petemail: {type: String, required: true},
     descs: [Desc]
 });
 

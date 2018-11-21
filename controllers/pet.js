@@ -67,6 +67,7 @@ module.exports.getPets = function(req, res){
         res.render('pets', {
           title : 'Favorite pets',
             pets: body,
+            user: req.user,
             message: msg
           });
         })
@@ -87,10 +88,12 @@ module.exports.getPet = function(req,res){
           if (response.statusCode === 200){
             res.render('pet', {
               title: 'Favorite pet',
+              user: req.user,
               favorpet: body,
               pet: {
                 name: body.name,
                 age: body.age,
+                petemail: body.petemail,
                 descs: body.descs
               }
                 });
@@ -136,7 +139,8 @@ module.exports.createPet = function(req, res){
       postdata = {
         name: req.body.formname, 
         age: req.body.formage,
-        descs: descdict
+        descs: descdict,
+        petemail: req.user.local.email
       };
       
       requestOps = {

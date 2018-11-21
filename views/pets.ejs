@@ -6,13 +6,35 @@
   </head>
   <body>
       <div class="container">
-      <h1 id="favorpets"><%= title %></h1>
+      <!--<h1 id="favorpets"><%= title %></h1>-->
+          <h1 id="favorpets"> Your favorite pets:</h1>
+    <div>
+          <% if (user.local.email != null) { %>
+            <!--<img src="https://avatars.io/gravatar/<%= user.local.email %>" class="img-circle"><br>-->
+            <strong>Logged in by</strong> : <%= user.local.email %><br>
+          <% } %>
+           <br>
+        </div>
+ 
+          <ul>
+          <% pets.forEach(function(pet){ %>
+          <% if (user.local.email === pet.petemail) { %>
+          <li> <a href='/pet/<%= pet._id %>'><%= pet.name %></a></li>
+          <% } %>
+          <% }); %>
+      </ul>
+      <hr>
+          
+        <h1 id="favorpets"> Other favorite pets:</h1>
+      <ul>
+          <% pets.forEach(function(pet){ %>
+          <% if (user.local.email !== pet.petemail) { %>
+          <li> <a href='/pet/<%= pet._id %>'><%= pet.name %></a></li>
+          <% } %>
+          <% }); %>
+      </ul>
+ 
     
-     <ul>
-    <% pets.forEach(function(pet){ %>
-    <li> <a href='/pet/<%= pet._id %>'><%= pet.name %></a></li>
-    <% }); %>
-    </ul>
        
       <p id="newpet"><a class="change" href='/createpet'> New  </a></p>
           <hr>
